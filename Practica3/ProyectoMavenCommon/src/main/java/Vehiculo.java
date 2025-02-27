@@ -14,9 +14,11 @@ public abstract class Vehiculo {
 	private LocalDate fechaMatriculacion;
 	private TipoMotor motor;
 
-	// TODO
 	public Vehiculo(long id, String matricula, LocalDate fechaMatriculacion, TipoMotor motor) {
-		// TODO
+		this.id = id;
+		this.matricula = matricula;
+		this.fechaMatriculacion = fechaMatriculacion;
+		this.motor = motor;
 	}
 
 	/**
