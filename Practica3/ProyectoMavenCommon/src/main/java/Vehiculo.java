@@ -49,7 +49,10 @@ public abstract class Vehiculo {
 		return id;
 	}
 
-	// TODO
+	/**
+	 * 
+	 * @return el precio del impuesto asociado al vehiculo
+	 */
 	public abstract double precioImpuesto();
 
 }
