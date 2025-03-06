@@ -11,6 +11,8 @@ public class Motocicleta extends Vehiculo {
 
 	public Motocicleta(long id, String matricula, LocalDate fechaMatriculacion, TipoMotor motor, int cilindrada) {
 		super(id, matricula, fechaMatriculacion, motor);
+		//TO-DO
+		this.cilindrada = cilindrada;
 	}
 
 	/**
@@ -22,8 +24,10 @@ public class Motocicleta extends Vehiculo {
 
 	@Override
 	public double precioImpuesto() {
-		//TODO
-		return 0;
+		//TO-DO
+		double pImpuesto = 0;
+		
+		return pImpuesto;
 	}
 
 }
