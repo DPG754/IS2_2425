@@ -82,7 +82,7 @@ public class ContribuyentesDAO implements IContribuyentesDAO {
 
 	@Override
 	public Contribuyente actualizaContribuyente(Contribuyente nuevo) throws DataAccessException {
-		// TODO Auto-generated method stub
+	
 		return null;
 	}
 
