@@ -21,7 +21,8 @@ public class Turismo extends Vehiculo {
 
 	@Override
 	public double precioImpuesto() {
-		//TODO
+		// lala
+		
 		return 0;
 	}
 
