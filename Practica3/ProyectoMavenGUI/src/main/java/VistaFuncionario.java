@@ -43,8 +43,8 @@ public class VistaFuncionario extends JFrame {
 	}
 	
 	public VistaFuncionario(GestionImpuestoCirculacion g) {
-
-
+	    this.info = g;  // Asignamos g a info
+	    init(); // Llamamos a la inicialización de la interfaz
 	}
 
 	public void init() {
