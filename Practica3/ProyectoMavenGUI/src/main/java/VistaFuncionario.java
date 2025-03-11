@@ -42,12 +42,6 @@ public class VistaFuncionario extends JFrame {
 		this.info = info;
 		init();
 	}
-	
-
-	public VistaFuncionario(GestionImpuestoCirculacion g) {
-		this.info = g;
-		init();
-	}
 
 	public void init() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
