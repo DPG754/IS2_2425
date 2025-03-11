@@ -88,8 +88,16 @@ public class ContribuyentesDAO implements IContribuyentesDAO {
 
 	@Override
 	public Contribuyente eliminaContribuyente(String dni) throws DataAccessException {
-		// TODO Auto-generated method stub
-		return null;
+		// TO-DO Auto-generated method stub
+		try {
+			Contribuyente cont = contribuyente(dni);
+			List<Contribuyente> c = contribuyentes();
+			c.remove(cont);
+			return cont;
+		} catch (DataAccessException e) {
+			throw e;
+		}
+
 	}
 
 }

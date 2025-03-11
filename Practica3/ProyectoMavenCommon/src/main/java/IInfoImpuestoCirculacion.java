@@ -1,5 +1,5 @@
 /**
- * Interfaz de negocio para consultar información sobre 
+ * Interfaz de negocio para consultar informacion sobre 
  * contribuyentes y vehiculos
  */
 public interface IInfoImpuestoCirculacion {

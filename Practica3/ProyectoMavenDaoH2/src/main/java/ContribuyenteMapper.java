@@ -10,7 +10,7 @@ public class ContribuyenteMapper {
 	/**
 	 * Recibe una fila de la BBDD correspondinete a un contribuyente 
 	 * y devuelve un objeto Contribuyente con los datos correspondientes
-	 * a sus atributos primitivos (no asociaciones múltiples)
+	 * a sus atributos primitivos (no asociaciones multiples)
 	 * @param results Fila resultado de una consulta en base de datos
 	 * @return Contribuyente El contribuyente en su estado actual en BBDD
 	 */

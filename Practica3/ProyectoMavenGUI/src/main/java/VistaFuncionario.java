@@ -33,6 +33,7 @@ public class VistaFuncionario extends JFrame {
 
 	private IInfoImpuestoCirculacion info;
 
+
 	/**
 	 * Create the frame.
 	 */
@@ -41,11 +42,14 @@ public class VistaFuncionario extends JFrame {
 		this.info = info;
 		init();
 	}
+<<<<<<< HEAD
 	
 	public VistaFuncionario(GestionImpuestoCirculacion g) {
 	    this.info = g;  // Asignamos g a info
 	    init(); // Llamamos a la inicialización de la interfaz
 	}
+=======
+>>>>>>> 3fbda1a9d934190091b648c40dd8602880ef07f5
 
 	public void init() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

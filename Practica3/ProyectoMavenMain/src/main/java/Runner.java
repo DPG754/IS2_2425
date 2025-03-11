@@ -1,5 +1,5 @@
 /**
- * Clase principal que construye la aplicación de tres capas y lanza su ejecución
+ * Clase principal que construye la aplicacion de tres capas y lanza su ejecucion
  */
 public class Runner {
 
@@ -14,7 +14,7 @@ public class Runner {
 		// Componentes casa presentacion
 		VistaFuncionario vista = new VistaFuncionario(negocio);
 		
-		// Lanza ejecución
+		// Lanza ejecucion
 		vista.setVisible(true);
 	}
 
