@@ -33,6 +33,7 @@ public class VistaFuncionario extends JFrame {
 
 	private IInfoImpuestoCirculacion info;
 
+
 	/**
 	 * Create the frame.
 	 */
@@ -42,9 +43,10 @@ public class VistaFuncionario extends JFrame {
 		init();
 	}
 	
+
 	public VistaFuncionario(GestionImpuestoCirculacion g) {
-
-
+		this.info = g;
+		init();
 	}
 
 	public void init() {
