@@ -1,3 +1,4 @@
+package es.unican.is2.java;
 /**
  * Interfaz de negocio para consultar informacion sobre 
  * contribuyentes y vehiculos

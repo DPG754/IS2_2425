@@ -2,6 +2,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
+import es.unican.is2.java.DataAccessException;
+import es.unican.is2.java.Motocicleta;
+import es.unican.is2.java.TipoMotor;
+import es.unican.is2.java.Turismo;
+import es.unican.is2.java.Vehiculo;
+
 /**
  * Clase de utilidad que mapea filas de la base de datos a 
  * instancias de Empleado

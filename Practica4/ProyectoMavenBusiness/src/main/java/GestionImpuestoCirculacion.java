@@ -1,3 +1,13 @@
+import es.unican.is2.java.Contribuyente;
+import es.unican.is2.java.DataAccessException;
+import es.unican.is2.java.IContribuyentesDAO;
+import es.unican.is2.java.IGestionContribuyentes;
+import es.unican.is2.java.IGestionVehiculos;
+import es.unican.is2.java.IInfoImpuestoCirculacion;
+import es.unican.is2.java.IVehiculosDAO;
+import es.unican.is2.java.OperacionNoValidaException;
+import es.unican.is2.java.Vehiculo;
+
 public class GestionImpuestoCirculacion implements IInfoImpuestoCirculacion, IGestionContribuyentes, IGestionVehiculos {
 
     private IContribuyentesDAO contribuyentesDAO;

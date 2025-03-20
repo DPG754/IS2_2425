@@ -1,6 +1,9 @@
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import es.unican.is2.java.Contribuyente;
+import es.unican.is2.java.DataAccessException;
+
 /**
  * Clase de utilidad que mapea filas de la base de datos a 
  * instancias de Contribuyente

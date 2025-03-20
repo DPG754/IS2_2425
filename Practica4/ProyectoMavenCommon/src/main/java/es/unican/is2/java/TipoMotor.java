@@ -1,3 +1,4 @@
+package es.unican.is2.java;
 
 
 public enum TipoMotor {

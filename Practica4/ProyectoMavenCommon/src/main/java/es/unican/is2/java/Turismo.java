@@ -1,3 +1,4 @@
+package es.unican.is2.java;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
@@ -46,7 +47,7 @@ public class Turismo extends Vehiculo {
     private double calcularDescuento(double impuestoBase) {
         LocalDate hoy = LocalDate.now();
         long antigüedad = ChronoUnit.YEARS.between(getFechaMatriculacion(), hoy);
-        if (antigüedad > 25) {
+        if (antigüedad >= 25) {
             return impuestoBase;
         }
 
