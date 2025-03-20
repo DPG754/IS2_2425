@@ -1,9 +1,9 @@
 public class GestionImpuestoCirculacion implements IInfoImpuestoCirculacion, IGestionContribuyentes, IGestionVehiculos {
 
-    private ContribuyentesDAO contribuyentesDAO;
+    private IContribuyentesDAO contribuyentesDAO;
     private IVehiculosDAO vehiculosDAO;
 
-    public GestionImpuestoCirculacion(ContribuyentesDAO c, IVehiculosDAO v) {
+    public GestionImpuestoCirculacion(IContribuyentesDAO c, IVehiculosDAO v) {
         this.contribuyentesDAO = c;
         this.vehiculosDAO = v;
     }
@@ -12,7 +12,7 @@ public class GestionImpuestoCirculacion implements IInfoImpuestoCirculacion, IGe
     public Vehiculo altaVehiculo(Vehiculo v, String dni) throws OperacionNoValidaException, DataAccessException {
         Contribuyente c = contribuyentesDAO.contribuyente(dni);
         if (c == null) {
-            throw new OperacionNoValidaException("Contribuyente no encontrado.");
+            return null;
         }
         if (vehiculosDAO.vehiculoPorMatricula(v.getMatricula()) != null) {
             throw new OperacionNoValidaException("El vehículo ya está registrado.");
@@ -27,7 +27,7 @@ public class GestionImpuestoCirculacion implements IInfoImpuestoCirculacion, IGe
         Contribuyente c = contribuyentesDAO.contribuyente(dni);
         
         if (v == null || c == null) {
-            throw new OperacionNoValidaException("Vehículo o contribuyente no encontrado.");
+            return null;
         }
         if (!c.getVehiculos().removeIf(vehiculo -> vehiculo.getMatricula().equals(matricula))) {
             throw new OperacionNoValidaException("El vehículo no pertenece al contribuyente.");
@@ -42,7 +42,7 @@ public class GestionImpuestoCirculacion implements IInfoImpuestoCirculacion, IGe
         Contribuyente nuevo = contribuyentesDAO.contribuyente(dniNuevo);
         
         if (v == null || actual == null || nuevo == null) {
-            throw new OperacionNoValidaException("Datos incorrectos.");
+            return false;
         }
         if (!actual.getVehiculos().contains(v)) {
             throw new OperacionNoValidaException("El vehículo no pertenece al contribuyente actual.");
@@ -56,7 +56,7 @@ public class GestionImpuestoCirculacion implements IInfoImpuestoCirculacion, IGe
     @Override
     public Contribuyente altaContribuyente(Contribuyente c) throws DataAccessException {
         if (contribuyentesDAO.contribuyente(c.getDni()) != null) {
-            throw new OperacionNoValidaException("El contribuyente ya existe.");
+            return null;
         }
         return contribuyentesDAO.creaContribuyente(c);
     }
@@ -65,7 +65,7 @@ public class GestionImpuestoCirculacion implements IInfoImpuestoCirculacion, IGe
     public Contribuyente bajaContribuyente(String dni) throws OperacionNoValidaException, DataAccessException {
         Contribuyente c = contribuyentesDAO.contribuyente(dni);
         if (c == null) {
-            throw new OperacionNoValidaException("El contribuyente no existe.");
+            return null;
         }
         if (!c.getVehiculos().isEmpty()) {
             throw new OperacionNoValidaException("El contribuyente tiene vehículos registrados.");

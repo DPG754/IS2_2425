@@ -24,10 +24,12 @@ public class Contribuyente {
      * @param dni que lo identifica
      */
     public Contribuyente(String nombre, String apellido1, String apellido2, String dni) {
-		this.nombre = nombre;
+		
+    	this.dni = dni;
+    	this.nombre = nombre;
 		this.apellido1 = apellido1;
 		this.apellido2 = apellido2;
-		this.dni = dni;
+
 	}
     
     /**
