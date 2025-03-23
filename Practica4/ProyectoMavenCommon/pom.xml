@@ -3,11 +3,22 @@
   <groupId>es.unican.is2</groupId>
   <artifactId>ImpuestoCirculacionCommon</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <dependencies>
-  	<dependency>
-  		<groupId>junit</groupId>
-  		<artifactId>junit</artifactId>
-  		<version>4.13.2</version>
-  	</dependency>
-  </dependencies>
+	<dependencies>
+	  <dependency>
+	    <groupId>org.junit.jupiter</groupId>
+	    <artifactId>junit-jupiter</artifactId>
+	    <version>5.10.0</version>
+	    <scope>test</scope>
+	  </dependency>
+	</dependencies>
+	
+	<build>
+	  <plugins>
+	    <plugin>
+	      <groupId>org.apache.maven.plugins</groupId>
+	      <artifactId>maven-surefire-plugin</artifactId>
+	      <version>3.1.2</version>
+	    </plugin>
+	  </plugins>
+	</build>
 </project>
