@@ -1,3 +1,6 @@
+import es.unican.is2.java.GestionImpuestoCirculacion;
+import es.unican.is2.java.VistaFuncionario;
+
 /**
  * Clase principal que construye la aplicacion de tres capas y lanza su ejecucion
  */

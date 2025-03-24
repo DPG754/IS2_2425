@@ -1,12 +1,6 @@
-import es.unican.is2.java.Contribuyente;
-import es.unican.is2.java.DataAccessException;
-import es.unican.is2.java.IContribuyentesDAO;
-import es.unican.is2.java.IGestionContribuyentes;
-import es.unican.is2.java.IGestionVehiculos;
-import es.unican.is2.java.IInfoImpuestoCirculacion;
-import es.unican.is2.java.IVehiculosDAO;
-import es.unican.is2.java.OperacionNoValidaException;
-import es.unican.is2.java.Vehiculo;
+package es.unican.is2.java;
+
+import es.unican.is2.java.*;
 
 public class GestionImpuestoCirculacion implements IInfoImpuestoCirculacion, IGestionContribuyentes, IGestionVehiculos {
 
@@ -28,6 +22,7 @@ public class GestionImpuestoCirculacion implements IInfoImpuestoCirculacion, IGe
             throw new OperacionNoValidaException("El vehículo ya está registrado.");
         }
         c.getVehiculos().add(v);
+        contribuyentesDAO.actualizaContribuyente(c); // ✅ Se guarda el cambio en la BD
         return vehiculosDAO.creaVehiculo(v);
     }
 
@@ -39,9 +34,10 @@ public class GestionImpuestoCirculacion implements IInfoImpuestoCirculacion, IGe
         if (v == null || c == null) {
             return null;
         }
-        if (!c.getVehiculos().removeIf(vehiculo -> vehiculo.getMatricula().equals(matricula))) {
+        if (!c.getVehiculos().remove(v)) {  // ✅ Mejor eliminación directa
             throw new OperacionNoValidaException("El vehículo no pertenece al contribuyente.");
         }
+        contribuyentesDAO.actualizaContribuyente(c); // ✅ Se actualiza la BD
         return vehiculosDAO.eliminaVehiculo(matricula);
     }
 
@@ -57,8 +53,10 @@ public class GestionImpuestoCirculacion implements IInfoImpuestoCirculacion, IGe
         if (!actual.getVehiculos().contains(v)) {
             throw new OperacionNoValidaException("El vehículo no pertenece al contribuyente actual.");
         }
-        actual.getVehiculos().removeIf(vehiculo -> vehiculo.getMatricula().equals(matricula));
-        nuevo.getVehiculos().add(v);
+        actual.getVehiculos().remove(v); // ✅ Eliminamos correctamente
+        nuevo.getVehiculos().add(v); // ✅ Se añade al nuevo titular
+        contribuyentesDAO.actualizaContribuyente(actual); // ✅ Guardamos cambios en la BD
+        contribuyentesDAO.actualizaContribuyente(nuevo);
         vehiculosDAO.actualizaVehiculo(v);
         return true;
     }
