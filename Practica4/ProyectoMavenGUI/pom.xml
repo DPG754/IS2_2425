@@ -11,11 +11,6 @@
   		<version>0.0.1-SNAPSHOT</version>
   	</dependency>
   	<dependency>
-  		<groupId>es.unican.is2</groupId>
-  		<artifactId>ImpuestoCirculacionBusiness</artifactId>
-  		<version>0.0.1-SNAPSHOT</version>
-  	</dependency>
-  	<dependency>
 	    <groupId>org.junit.jupiter</groupId>
 	    <artifactId>junit-jupiter</artifactId>
 	    <version>5.10.0</version>
@@ -41,26 +36,28 @@
 	        <version>3.17.1</version>
 	        <scope>test</scope>
 	    </dependency>
-	    
-	</dependencies>
+
+	    <dependency>
+	    	<groupId>es.unican.is2</groupId>
+	    	<artifactId>ImpuestoCirculacionBusiness</artifactId>
+	    	<version>0.0.1-SNAPSHOT</version>
+	    </dependency>
+  </dependencies>
 	<build>
 	  <plugins>
 	    <plugin>
 	      <groupId>org.apache.maven.plugins</groupId>
 	      <artifactId>maven-failsafe-plugin</artifactId>
-	      <version>3.1.2</version>
-	      <executions>
+	      <version>3.5.2</version>
+	      <!--Enlazamos el plug in con la fase verify -->
+	      <executions>  
 	        <execution>
 	          <goals>
-	            <goal>integration-test</goal>
-	            <goal>verify</goal>
+				<goal>integration-test</goal>
+				<goal>verify</goal>
 	          </goals>
-	          <configuration>
-	            <includes>
-	              <include>**/*IT.java</include>
-	            </includes>
-	          </configuration>
 	        </execution>
+	        
 	      </executions>
 	    </plugin>
 	  </plugins>

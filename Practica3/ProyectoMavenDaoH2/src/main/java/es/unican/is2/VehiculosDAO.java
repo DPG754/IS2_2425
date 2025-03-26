@@ -5,12 +5,6 @@ import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 
-import es.unican.is2.java.DataAccessException;
-import es.unican.is2.java.IVehiculosDAO;
-import es.unican.is2.java.Motocicleta;
-import es.unican.is2.java.Turismo;
-import es.unican.is2.java.Vehiculo;
-
 /**
  * Clase que implementa la capa DAO de acceso a vehiculos.
  * Utiliza almacenamiento en base de datos H2 en memoria.

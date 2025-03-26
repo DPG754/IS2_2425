@@ -15,7 +15,12 @@ public abstract class Vehiculo {
 	private LocalDate fechaMatriculacion;
 	private TipoMotor motor;
 
-	public Vehiculo(long id, String matricula, LocalDate fechaMatriculacion, TipoMotor motor) {
+	public Vehiculo(long id, String matricula, LocalDate fechaMatriculacion, TipoMotor motor) throws NullPointerException {
+		
+		if (motor == null) {
+			throw new NullPointerException();
+		}
+		
 		this.id = id;
 		this.matricula = matricula;
 		this.fechaMatriculacion = fechaMatriculacion;

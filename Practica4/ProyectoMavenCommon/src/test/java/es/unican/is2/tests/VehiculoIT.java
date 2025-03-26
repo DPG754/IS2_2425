@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import es.unican.is2.java.Turismo;
 import es.unican.is2.java.TipoMotor;
 
-public class VehiculoTest {
+public class VehiculoIT {
 
     LocalDate hoy = LocalDate.now();
 
@@ -100,8 +100,9 @@ public class VehiculoTest {
     @Test
     @DisplayName("Motor null - lanza NullPointerException")
     public void testMotorNull() {
+    	TipoMotor motor = null;
         assertThrows(NullPointerException.class, () -> {
-            new Turismo(12L, "9999ABC", hoy, null, 14).precioImpuesto();
+            new Turismo(12L, "9999ABC", hoy, motor, 14).precioImpuesto();
         });
     }
 

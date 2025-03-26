@@ -28,6 +28,10 @@ public class Motocicleta extends Vehiculo {
 		//TO-DO
 		double pImpuesto = 0;
 		
+		if (LocalDate.now().getYear() - this.getFechaMatriculacion().getYear() > 25) {
+			return pImpuesto;
+		}
+		
 		if (this.cilindrada <= 125) {
 			pImpuesto = 8;
 		} else if (this.cilindrada <= 250) {
@@ -39,6 +43,17 @@ public class Motocicleta extends Vehiculo {
 		} else {
 			pImpuesto = 120;
 		}
+		
+		if (this.getMotor() == TipoMotor.ELECTRICO || 
+				(this.getMotor() == TipoMotor.HIBRIDO &&
+				LocalDate.now().getYear() - this.getFechaMatriculacion().getYear() <= 4 )) {
+			pImpuesto -= pImpuesto * 0.75;
+		} else if (this.getMotor() == TipoMotor.GAS &&
+				LocalDate.now().getYear() - this.getFechaMatriculacion().getYear() <= 1 ) {
+			pImpuesto -= pImpuesto * 0.5;
+		}
+		
+
 		
 		return pImpuesto;
 	}

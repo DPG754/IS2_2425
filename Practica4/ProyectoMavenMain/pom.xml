@@ -5,11 +5,7 @@
   <version>0.0.1-SNAPSHOT</version>
   
   <dependencies>
-  	<dependency>
-  		<groupId>es.unican.is2</groupId>
-  		<artifactId>ImpuestoCirculacionDAOH2</artifactId>
-  		<version>0.0.1-SNAPSHOT</version>
-  	</dependency>
+
   	<dependency>
   		<groupId>es.unican.is2</groupId>
   		<artifactId>ImpuestoCirculacionBusiness</artifactId>
@@ -25,6 +21,11 @@
 		<artifactId>junit</artifactId>
 		<version>4.12</version>
 		<scope>test</scope>
+	</dependency>
+	<dependency>
+		<groupId>es.unican.is2</groupId>
+		<artifactId>ImpuestoCirculacionDAOH2</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
 	</dependency>
   </dependencies>
   
