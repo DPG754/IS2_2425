@@ -16,10 +16,13 @@ public class ListaOrdenada<E extends Comparable<E>> implements IListaOrdenada<E>
 	}
 
 	public void add(E elemento) {
+		if(elemento == null) {
+			throw new NullPointerException();
+		}
 		int indice = 0;
 		if (lista.size() != 0) {
-			while (indice < lista.size() && elemento.compareTo(lista.get(indice)) < 0) {
-				indice++;
+			while (indice < lista.size() && elemento.compareTo(lista.get(indice)) > 0) {
+			    indice++;
 			}
 		}
 		lista.add(indice, elemento);
@@ -35,8 +38,8 @@ public class ListaOrdenada<E extends Comparable<E>> implements IListaOrdenada<E>
 	}
 
 	public void clear() {
-		for (int i=1; i<lista.size(); i++) {
-			lista.remove(i);
+		while(lista.size()!=0) {
+			lista.remove(0);
 		}
 	}
 }
