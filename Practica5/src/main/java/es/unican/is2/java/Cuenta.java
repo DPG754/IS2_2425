@@ -5,11 +5,11 @@ public class Cuenta {
 	
 	private String numCuenta;
 	
-	public Cuenta(String numCuenta) {
+	public Cuenta(String numCuenta) { //WMC=1	//Ccog=0
 		this.numCuenta = numCuenta;
 	}
 	
-	public String getNumCuenta() {
+	public String getNumCuenta() {	//WMC=1 //Ccog=0
 		return numCuenta;
 	}
 	
