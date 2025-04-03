@@ -45,6 +45,14 @@ public class ListaOrdenadaTest {
 		assertTrue(1 == sut.size());
 		assertTrue(sut.get(0).equals(1), "No exito");
 		
+		sut.add(3);
+		assertTrue(2 == sut.size());
+		assertTrue(sut.get(1).equals(3), "No exito");
+		
+		sut.add(2);
+		assertTrue(3 == sut.size());
+		assertTrue(sut.get(1).equals(2), "No exito");
+		
 		assertThrows(NullPointerException.class, () -> {
             sut.add(null);
         });
@@ -70,5 +78,32 @@ public class ListaOrdenadaTest {
             sut.get(-1);
         });
 	}
-	
+	@Test
+	public void testSize() {
+
+		assertTrue(sut.size() == 0);
+		
+		sut.add(1);
+		assertTrue(sut.size() == 1);
+
+		sut.add(2);
+		sut.add(3);
+		assertTrue(sut.size() == 3);
+		
+		
+	}
+	@Test
+	public void testClear() {
+		
+		assertTrue(sut.size() == 0);
+		
+		sut.add(1);
+		sut.add(2);
+		sut.add(3);
+		assertTrue(sut.size() == 3);
+		sut.clear();
+		assertTrue(sut.size() == 0);
+		
+		
+	}
 }
