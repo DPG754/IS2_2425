@@ -25,31 +25,32 @@ public class Credito extends Tarjeta {
 	 * @throws datoErroneoException
 	 */
 	@Override
-	public void retirar(double x) throws saldoInsuficienteException, datoErroneoException { //WMC=3 //Ccog=3
-		if (x<0)																		//WMC=+1 //Ccog=+1
-			throw new datoErroneoException("No se puede retirar una cantidad negativa");
+	public void retirar(double x) throws saldoInsuficienteException, datoErroneoException { //WMC=+ //Ccog=0
+		Movimiento m = crearMovimiento(x, "Retirada en cajero");
 		
-		LocalDateTime now = LocalDateTime.now();
-		Movimiento m = new Movimiento("Retirada en cajero", now, -x);
-		if (getGastosAcumulados()+x > credito)											//WMC=+1 //Ccog=+1
-			throw new saldoInsuficienteException("Credito insuficiente");
-		else {																			//Ccog=+1
-			MovimientosMensuales.add(m);
-		}
-	}
-
-	@Override
-	public void pagoEnEstablecimiento(String datos, double x) throws saldoInsuficienteException, datoErroneoException {//WMC=3  //Ccog=2
-		if (x<0)																	//WMC=+1  //Ccog=+1
-			throw new datoErroneoException("No se puede retirar una cantidad negativa");
-		
-		if (getGastosAcumulados() + x > credito)										//WMC=+1  //Ccog=+1
-			throw new saldoInsuficienteException("Saldo insuficiente");
-		LocalDateTime now = LocalDateTime.now();
-		Movimiento m = new Movimiento("Compra a credito en: " + datos, now, -x);
 		MovimientosMensuales.add(m);
 	}
-	
+
+
+	@Override
+	public void pagoEnEstablecimiento(String datos, double x) throws saldoInsuficienteException, datoErroneoException {//WMC=+  //Ccog=0
+		Movimiento m = crearMovimiento(x, "Compra a credito en: "+ datos);
+		MovimientosMensuales.add(m);
+	}
+
+	private Movimiento crearMovimiento(double x, String mensaje) {
+		if (x<0)																		//WMC=+1 //Ccog=+1
+			throw new datoErroneoException("No se puede retirar una cantidad negativa");
+
+
+		if (getGastosAcumulados()+x > credito) {									//WMC=+1 //Ccog=+1
+			throw new saldoInsuficienteException("Credito insuficiente");
+		}
+		LocalDateTime now = LocalDateTime.now();
+		return (new Movimiento(mensaje, now, -x));
+
+	}
+
     private double getGastosAcumulados() {	//WMC= 2 //Ccog=1
 		double r = 0.0;
 		for (int i = 0; i < this.MovimientosMensuales.size(); i++) { //WMC=+1 //Ccog=+1
@@ -94,5 +95,7 @@ public class Credito extends Tarjeta {
 	public List<Movimiento> getMovimientos() { //WMC=1	//Ccog=0
 		return historicoMovimientos;
 	}
+	
+	
 
 }
