@@ -29,13 +29,8 @@ public class Credito extends Tarjeta {
 		if (x<0)																		//WMC=+1 //Ccog=+1
 			throw new datoErroneoException("No se puede retirar una cantidad negativa");
 		
-		Movimiento m = new Movimiento();
 		LocalDateTime now = LocalDateTime.now();
-		m.setF(now);
-		m.setC("Retirada en cajero");
-		x += x * 0.05; // Comision por operacion con tarjetas credito
-		m.setI(-x);
-		
+		Movimiento m = new Movimiento("Retirada en cajero", now, -x);
 		if (getGastosAcumulados()+x > credito)											//WMC=+1 //Ccog=+1
 			throw new saldoInsuficienteException("Credito insuficiente");
 		else {																			//Ccog=+1
@@ -50,12 +45,8 @@ public class Credito extends Tarjeta {
 		
 		if (getGastosAcumulados() + x > credito)										//WMC=+1  //Ccog=+1
 			throw new saldoInsuficienteException("Saldo insuficiente");
-		
-		Movimiento m = new Movimiento();
 		LocalDateTime now = LocalDateTime.now();
-		m.setF(now);
-		m.setC("Compra a credito en: " + datos);
-		m.setI(-x);
+		Movimiento m = new Movimiento("Compra a credito en: " + datos, now, -x);
 		MovimientosMensuales.add(m);
 	}
 	
@@ -77,17 +68,14 @@ public class Credito extends Tarjeta {
 	 * Metodo que se invoca automaticamente el dia 1 de cada mes
 	 */
 	public void liquidar() {//WMC=3	//Ccog=2
-		Movimiento liq = new Movimiento();
-		LocalDateTime now = LocalDateTime.now();
-		liq.setF(now);
-		liq.setC("Liquidacion de operaciones tarjeta credito");
+		
 		double r = 0.0;
 		for (int i = 0; i < this.MovimientosMensuales.size(); i++) {//WMC=+1	//Ccog=+1
 			Movimiento m = (Movimiento) MovimientosMensuales.get(i);
 			r += m.getI();
 		}
-		liq.setI(-r);
-	
+		LocalDateTime now = LocalDateTime.now();
+		Movimiento liq = new Movimiento("Liquidacion de operaciones tarjeta credito", now, -r);
 		if (r != 0)													//WMC=+1	//Ccog=+1
 			cuentaAsociada.addMovimiento(liq);
 		
