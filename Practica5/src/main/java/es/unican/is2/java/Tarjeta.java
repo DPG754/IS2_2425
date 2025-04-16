@@ -1,10 +1,12 @@
 package es.unican.is2.java;
 
+import java.time.LocalDateTime;
 
 public abstract class Tarjeta {
 	
 	protected String numero, titular, cvc;		
 	protected CuentaAhorro cuentaAsociada;
+	protected double saldoDisponible;
 	
 	public Tarjeta(String numero, String titular, String cvc, 
 			CuentaAhorro cuentaAsociada) {// WMC ++ // CCog +0
@@ -20,8 +22,7 @@ public abstract class Tarjeta {
 	 * @throws saldoInsuficienteException
 	 * @throws datoErroneoException
 	 */	
-	public abstract void retirar(double x) throws saldoInsuficienteException, datoErroneoException; //WMC ++ //Ccog +0
-
+	public abstract void retirar(double x) throws saldoInsuficienteException, datoErroneoException;//WMC ++ //Ccog +0
 
 	/**
 	 * Pago en establecimiento con la tarjeta
@@ -30,8 +31,8 @@ public abstract class Tarjeta {
 	 * @throws saldoInsuficienteException
 	 * @throws datoErroneoException
 	 */
-
 	public abstract void pagoEnEstablecimiento(String datos, double x)
 			throws saldoInsuficienteException, datoErroneoException; //WMC ++ //Ccog +0
-	
+
+
 }
