@@ -70,14 +70,14 @@ public class Credito extends Tarjeta {
 	 */
 	public void liquidar() {//WMC=3	//Ccog=2
 		
-		double r = 0.0;
+		double importeLiquidacion = 0.0;
 		for (int i = 0; i < this.MovimientosMensuales.size(); i++) {//WMC=+1	//Ccog=+1
 			Movimiento m = (Movimiento) MovimientosMensuales.get(i);
-			r += m.getI();
+			importeLiquidacion += m.getI();
 		}
 		LocalDateTime now = LocalDateTime.now();
-		Movimiento liq = new Movimiento("Liquidacion de operaciones tarjeta credito", now, -r);
-		if (r != 0)													//WMC=+1	//Ccog=+1
+		Movimiento liq = new Movimiento("Liquidacion de operaciones tarjeta credito", now, -importeLiquidacion);
+		if (importeLiquidacion != 0)													//WMC=+1	//Ccog=+1
 			cuentaAsociada.addMovimiento(liq);
 		
 		historicoMovimientos.addAll(MovimientosMensuales);

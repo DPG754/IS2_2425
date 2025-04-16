@@ -26,18 +26,9 @@ public class CuentaAhorroTest {
 	
 	@BeforeAll
 	public static void inicializaAuxiliares() {
-		m1 = new Movimiento();
-		m1.setI(100);
-		m1.setC("Concepto1");
-		m1.setF(LocalDateTime.now());
-		m2 = new Movimiento();
-		m2.setI(200);
-		m2.setC("Concepto2");
-		m2.setF(LocalDateTime.now());
-		m3 = new Movimiento();
-		m3.setI(1500);
-		m3.setC("Concepto3");
-		m3.setF(LocalDateTime.now());
+		m1 = new Movimiento("Concepto1",LocalDateTime.now(),100 );
+		m2 = new Movimiento("Concepto2",LocalDateTime.now(),200);
+		m3 = new Movimiento("Concepto3",LocalDateTime.now(),1500);
 	}
 
 	@BeforeEach
@@ -81,7 +72,7 @@ public class CuentaAhorroTest {
 	public void testRetirarSinConcepto() {
 		
 		try {
-			sut.retirar(-10);
+			sut.retirar(null, -10);
 			fail("Debe lanzar DatoErroneoException");
 		} catch (datoErroneoException e) {
 		} catch (saldoInsuficienteException e) {
@@ -91,7 +82,7 @@ public class CuentaAhorroTest {
 		sut.addMovimiento(m1);
 		
 		try {
-			sut.retirar(50);
+			sut.retirar(null, 50);
 			assertTrue(sut.getSaldo()==50);
 			assertTrue(sut.getMovimientos().size()==2);
 			assertEquals(sut.getMovimientos().get(1).getC(), "Retirada de efectivo");
@@ -103,7 +94,7 @@ public class CuentaAhorroTest {
 		
 		
 		try {
-			sut.retirar(100);
+			sut.retirar(null, 100);
 			fail("Debe lanzar SaldoInsuficienteException");
 		} catch (datoErroneoException e) {
 			fail("Debe lanzar SaldoInsuficienteException");
@@ -115,18 +106,18 @@ public class CuentaAhorroTest {
 	public void testIngresarSinConcepto () {
 	
 		try {
-			sut.ingresar(-1);
+			sut.ingresar(null, -1);
 			fail("Debe lanzar DatoErroneoException");
 		} catch (datoErroneoException e) {
 		}
 
 		try {
-			sut.ingresar(0.01);
+			sut.ingresar(null, 0.01);
 			assertTrue(sut.getSaldo()==0.01);
 			assertTrue(sut.getMovimientos().size()==1);
 			assertEquals(sut.getMovimientos().get(0).getC(),"Ingreso en efectivo");
 			
-			sut.ingresar(100);
+			sut.ingresar(null, 100);
 			assertTrue(sut.getSaldo()==100.01);
 			assertTrue(sut.getMovimientos().size()==2);
 			

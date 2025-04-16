@@ -19,23 +19,23 @@ public class CuentaAhorro extends Cuenta {
 		limiteDebito = 1000;
 	}
 	
-	public void ingresar(String concepto, double x) throws datoErroneoException { //WMC +2 //Ccog +1
-		if (x <= 0) //WMC ++ //Ccog ++
+	public void ingresar(String concepto, double importe) throws datoErroneoException { //WMC +2 //Ccog +1
+		if (importe <= 0) //WMC ++ //Ccog ++
 			throw new datoErroneoException("No se puede ingresar una cantidad negativa");
 
 		LocalDateTime now = LocalDateTime.now();
-		Movimiento m = new Movimiento(concepto, now, x);
+		Movimiento m = new Movimiento(concepto, now, importe);
 		this.Movimientos.add(m);
 	}
 
-	public void retirar(String concepto, double x) throws saldoInsuficienteException, datoErroneoException { //WMC +3 //Ccog +2
-		if (getSaldo() < x) //WMC ++ //Ccog ++
+	public void retirar(String concepto, double importe) throws saldoInsuficienteException, datoErroneoException { //WMC +3 //Ccog +2
+		if (getSaldo() < importe) //WMC ++ //Ccog ++
 			throw new saldoInsuficienteException("Saldo insuficiente");
-		if (x <= 0) //WMC ++ //Ccog ++
+		if (importe <= 0) //WMC ++ //Ccog ++
 			throw new datoErroneoException("No se puede retirar una cantidad negativa");
 		
 		LocalDateTime now = LocalDateTime.now();
-		Movimiento m = new Movimiento(concepto, now, x);
+		Movimiento m = new Movimiento(concepto, now, importe);
 		this.Movimientos.add(m);
 	}
 
