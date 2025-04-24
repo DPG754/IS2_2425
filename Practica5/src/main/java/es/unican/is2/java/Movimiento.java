@@ -8,7 +8,7 @@ public class Movimiento {
 	private LocalDateTime fecha;
 	private double importe;
 
-	public Movimiento(String concepto, LocalDateTime date, double importe) {
+	public Movimiento(String concepto, LocalDateTime date, double importe) { //WMC ++ //Ccog +0
 		this.concepto = concepto;
 		this.fecha = date;
 		this.importe = importe;
@@ -28,9 +28,9 @@ public class Movimiento {
 
 	
 	@Override
-	public boolean equals(Object obj) {		//WMC=1 //Ccog=1
+	public boolean equals(Object obj) {		//WMC=2 //Ccog++
 		Movimiento other = (Movimiento)obj;
-		return (concepto.equals(other.concepto) && fecha.equals(other.fecha)&& importe==other.importe); //Ccog=+1
+		return (concepto.equals(other.concepto) && fecha.equals(other.fecha)&& importe==other.importe); //WMC ++ //Ccog=+1
 	}
 	
 }

@@ -1,7 +1,6 @@
 package es.unican.is2.java;
 
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -33,7 +32,9 @@ public class Credito extends Tarjeta {
 
 	@Override
 	public void pagoEnEstablecimiento(String datos, double x) throws saldoInsuficienteException, datoErroneoException {//WMC=+  //Ccog=0
-		crearMovimiento("Compra a credito en: "+ datos, x);
+		//se ha creado el metodo crearMovimiento(String mensaje, double x) para poder extraer el
+		//codigo comun de los metodos pagoEnEstablecimiento y retirar.
+		crearMovimiento("Compra a credito en: " + datos, x);
 
 	}
 
@@ -45,10 +46,6 @@ public class Credito extends Tarjeta {
 	}
 	
 	
-	public LocalDate getCaducidadCredito() {//WMC=1	//Ccog=0
-		return this.cuentaAsociada.getCaducidadCredito();
-	}
-
 	/**
 	 * Metodo que se invoca automaticamente el dia 1 de cada mes
 	 */
@@ -71,10 +68,7 @@ public class Credito extends Tarjeta {
 		return MovimientosMensuales;
 	}
 	
-	public CuentaAhorro getCuentaAsociada() { //WMC=1 //Ccog=0
-		return cuentaAsociada;
-	}
-	
+
 	public List<Movimiento> getMovimientos() { //WMC=1	//Ccog=0
 		return historicoMovimientos;
 	}
@@ -91,10 +85,9 @@ public class Credito extends Tarjeta {
 
 	
 	private void crearMovimiento(String mensaje, double x) {//WMC=+3  //Ccog=2
-		
-		if (getGastosAcumulados()+x > saldoDisponible) {									//WMC=+1 //Ccog=+1
+		if (getGastosAcumulados() +x > saldoDisponible) 								//WMC=+1 //Ccog=+1
 			throw new saldoInsuficienteException("Credito insuficiente");
-		}
+		
 		if (x<0)																		//WMC=+1 //Ccog=+1
 			throw new datoErroneoException("No se puede operar con una cantidad negativa");
 

@@ -13,4 +13,7 @@ public class Cuenta {
 		return numCuenta;
 	}
 	
+	public double getSaldo() { //WMC ++ //CCog +0
+		return 0;
+	}
 }

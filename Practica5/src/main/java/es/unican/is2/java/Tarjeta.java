@@ -1,5 +1,6 @@
 package es.unican.is2.java;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public abstract class Tarjeta {
@@ -22,7 +23,7 @@ public abstract class Tarjeta {
 	 * @throws saldoInsuficienteException
 	 * @throws datoErroneoException
 	 */	
-	public abstract void retirar(double x) throws saldoInsuficienteException, datoErroneoException;//WMC ++ //Ccog +0
+	public abstract void retirar(double x) throws saldoInsuficienteException, datoErroneoException;
 
 	/**
 	 * Pago en establecimiento con la tarjeta
@@ -32,7 +33,16 @@ public abstract class Tarjeta {
 	 * @throws datoErroneoException
 	 */
 	public abstract void pagoEnEstablecimiento(String datos, double x)
-			throws saldoInsuficienteException, datoErroneoException; //WMC ++ //Ccog +0
+			throws saldoInsuficienteException, datoErroneoException;
+
+	
+	public CuentaAhorro getCuentaAsociada() {		//WMC=1 //Ccog=0
+		return cuentaAsociada;
+	}
+
+	public LocalDate getCaducidad() {//WMC=1	//Ccog=0
+		return cuentaAsociada.getCaducidad();
+	}
 
 
 }

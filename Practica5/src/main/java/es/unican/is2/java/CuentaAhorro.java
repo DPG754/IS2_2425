@@ -8,8 +8,7 @@ import java.util.List;
 public class CuentaAhorro extends Cuenta {
 
 	private List<Movimiento> Movimientos;
-	private LocalDate caducidadDebito;
-	private LocalDate caducidadCredito;
+	private LocalDate caducidad;
 	private double limiteDebito;
 	private final static int LIMITE_FIJO = 1000;
 
@@ -47,13 +46,13 @@ public class CuentaAhorro extends Cuenta {
 		this.Movimientos.add(m);
 	}
 
+	@Override
 	public double getSaldo() { //WMC +2 //CCog ++
-		double r = 0.0;
-		for (int i = 0; i < this.Movimientos.size(); i++) { //WMC ++ //CCog ++
-			Movimiento m = (Movimiento) Movimientos.get(i);
-			r += m.getI();
+		double total = 0;
+		for (Movimiento m: Movimientos) { //WMC ++ //CCog ++
+			total += m.getI();
 		}
-		return r;
+		return total;
 	}
 
 	public void addMovimiento(Movimiento m) { //WMC ++ //CCog = 0
@@ -64,21 +63,14 @@ public class CuentaAhorro extends Cuenta {
 		return Movimientos;
 	}
 
-	public LocalDate getCaducidadDebito() { //WMC ++ //CCog = 0
-		return caducidadDebito;
+	public LocalDate getCaducidad() { //WMC ++ //CCog = 0
+		return caducidad;
 	}
 
-	public void setCaducidadDebito(LocalDate caducidadDebito) { //WMC ++ //CCog = 0
-		this.caducidadDebito = caducidadDebito;
+	public void setCaducidad(LocalDate caducidad) { //WMC ++ //CCog = 0
+		this.caducidad = caducidad;
 	}
 
-	public LocalDate getCaducidadCredito() { //WMC ++ //CCog = 0
-		return caducidadCredito;
-	}
-
-	public void setCaducidadCredito(LocalDate caducidadCredito) { //WMC ++ //CCog = 0
-		this.caducidadCredito = caducidadCredito;
-	}
 
 	public double getLimiteDebito() { //WMC ++ //CCog = 0
 		return limiteDebito;

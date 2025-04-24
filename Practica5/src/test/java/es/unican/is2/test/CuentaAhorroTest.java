@@ -41,17 +41,17 @@ public class CuentaAhorroTest {
 		assertEquals(sut.getLimiteDebito(), 1000);
 		assertEquals(sut.getMovimientos().size(), 0);
 		assertEquals(sut.getNumCuenta(), "794311");
-		assertNull(sut.getCaducidadDebito());
-		assertNull(sut.getCaducidadCredito());		
+		assertNull(sut.getCaducidad());
+		assertNull(sut.getCaducidad());		
 	}
 	
 	@Test
 	public void testSetGetFechasCaducidad() {
 		LocalDate today = LocalDate.now();
-		sut.setCaducidadCredito(today);
-		sut.setCaducidadDebito(today);
-		assertEquals(today, sut.getCaducidadDebito());
-		assertEquals(today, sut.getCaducidadCredito());		
+		sut.setCaducidad(today);
+		sut.setCaducidad(today);
+		assertEquals(today, sut.getCaducidad());
+		assertEquals(today, sut.getCaducidad());		
 	}
 	
 	@Test

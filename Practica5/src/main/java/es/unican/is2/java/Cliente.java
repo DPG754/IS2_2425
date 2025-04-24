@@ -38,27 +38,16 @@ public class Cliente {
 		Cuentas.add(c);
 	}
 	
-	public void anhadeTarjeta(Tarjeta t) { //WMC +3 //Ccog +2
+	public void anhadeTarjeta(Tarjeta t) { //WMC ++ //Ccog +0
 		tarjetas.add(t);
-		if (t instanceof Debito) { //WMC ++ //Ccog++
-			Debito td = (Debito)t;
-			td.getCuentaAsociada().setCaducidadDebito(td.getCaducidadDebito());
-		} else { //WMC ++ //Ccog ++
-			Credito tc = (Credito) t;
-			tc.getCuentaAsociada().setCaducidadCredito(tc.getCaducidadCredito());
-		}
+		t.getCuentaAsociada().setCaducidad(t.getCaducidad());
+
 	}
 	
-	public double getSaldoTotal() { //WMC +9 //Ccog +8
+	public double getSaldoTotal() { //WMC +2 //Ccog ++
 		double total = 0.0;
 		for (Cuenta c: Cuentas) {  //WMC ++ //Ccog ++
-			if (c instanceof CuentaAhorro) { //WMC +2 //Ccog +2
-				total += ((CuentaAhorro) c).getSaldo();
-			} else if (c instanceof CuentaValores)  { //WMC +2 //Ccog +2
-				for (Valor v: ((CuentaValores) c).getValores()) { //WMC +3 //Ccog +3
-					total += v.getCotizacion()*v.getNumValores();
-				}
-			}
+			total += c.getSaldo();
 		}
 		return total;
 	}

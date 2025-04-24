@@ -17,10 +17,20 @@ public class CuentaValores extends Cuenta {
 		return valores;
 	}
 	
+	@Override
+	public double getSaldo() { //WMC +2 //Ccog ++
+		double total = 0;
+		for (Valor v: this.valores) { //WMC ++ //Ccog ++
+			total += v.getCotizacion()*v.getNumValores();
+		}
+		return total;
+	}
+	
 	public boolean anhadeValor(Valor valor) { //WMC +4 //Ccog +3
 		for (Valor v:valores) { //WMC ++ //Ccog +1
 			if (v.getEntidad().equals(valor.getEntidad())) //WMC +2 //Ccog +2
 				return false;
+			
 		}
 		valores.add(valor);
 		return true;

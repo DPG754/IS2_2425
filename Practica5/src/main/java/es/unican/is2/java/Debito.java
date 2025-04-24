@@ -20,19 +20,11 @@ public class Debito extends Tarjeta {
 		OperacionDebito("Compra en : " + datos, x);
 	}
 	
-	public LocalDate getCaducidadDebito() {  //WMC=1 //Ccog=0
-		return this.cuentaAsociada.getCaducidadDebito();
-	}
-	
 	/**
 	 * Metodo invocado automaticamente a las 00:00 de cada dia
 	 */
 	public void restableceSaldo() {		//WMC=1 //Ccog=0
 		saldoDisponible = cuentaAsociada.getLimiteDebito();
-	}
-	
-	public CuentaAhorro getCuentaAsociada() {		//WMC=1 //Ccog=0
-		return cuentaAsociada;
 	}
 	
 	//metodos auxiliares
